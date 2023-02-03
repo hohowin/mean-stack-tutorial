@@ -1,0 +1,12 @@
+{
+  "name": "mean-stack-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hohowin/mean-stack-tutorial.git",
+  "author": "Howin Ho <ho1ho@yahoo.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces":[
+    "mean-ui"
+  ]
+}
