@@ -4,6 +4,8 @@ Youtube: [Angular - Node - MongoDB & Express (MEAN) Tutorial for Beginners - Get
 
 ## Setup
 
+---
+
 ### Monorepo
 
 ```bash
@@ -32,6 +34,16 @@ yarn workspace mean-ui start
 
 go to localhost:4200
 
+### Angular Material
+
+```bash
+ng add @angular/material
+```
+
+theme is defined in `angular.json`
+
+---
+
 ## Development
 
 ### Angular
@@ -39,3 +51,20 @@ go to localhost:4200
 ```bash
 ng generate component post-create
 ```
+
+To bind data, either:
+
+```html
+<textarea [value]="newPost" #postInput></textarea>
+<!-- onAddPost(postInput: HTMLTextAreaElement) -->
+<button> (click)="onAddPost(postInput)">Save Post</button>
+```
+
+or:
+
+```html
+<textarea [(ngModel)]="enteredPost"></textarea>
+<button (click)="onAddPost()">Save Post</button>
+```
+
+### Angular Material
