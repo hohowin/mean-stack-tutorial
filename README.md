@@ -74,7 +74,8 @@ or:
 
 ### Angular Material
 
-See `app.modules.ts`, `post-create.component.html` and `post-create.component.scss` for example.
+- See [Components](https://material.angular.io/components/categories)
+- See `app.modules.ts`, `post-create.component.html` and `post-create.component.scss` for example.
 
 ### Angular Material Theme
 
