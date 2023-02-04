@@ -1,6 +1,7 @@
 # mean-stack-tutorial
 
 Youtube: [Angular - Node - MongoDB & Express (MEAN) Tutorial for Beginners - Getting Started](https://youtu.be/1tRLveSyNz8)
+Youtube: [Subjects in RxJS | Observables | Angular 12+](https://youtu.be/CKyMb3kXN_A)
 
 ## Setup
 
@@ -52,9 +53,11 @@ ng add @angular/material
 ### Angular
 
 ```bash
-ng generate component post-create
-ng generate component post-list
-ng generate component header
+ng generate component components/post-create
+ng generate component components/post-list
+ng generate component components/header
+
+ng generate service services/post
 ```
 
 To bind data, either:
