@@ -40,7 +40,10 @@ go to localhost:4200
 ng add @angular/material
 ```
 
-theme is defined in `angular.json`
+### Angular Material Theme
+
+- Theme is defined in `angular.json`
+ 
 
 ---
 
@@ -50,6 +53,8 @@ theme is defined in `angular.json`
 
 ```bash
 ng generate component post-create
+ng generate component post-list
+ng generate component header
 ```
 
 To bind data, either:
@@ -68,3 +73,11 @@ or:
 ```
 
 ### Angular Material
+
+See `app.modules.ts`, `post-create.component.html` and `post-create.component.scss` for example.
+
+### Angular Material Theme
+
+- Create `my-theme1.scss`
+- Check out [MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/) and [The color system](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
+- See [Styles and scripts configuration](https://angular.io/guide/workspace-config#styles-and-scripts-configuration) and [Theming Angular Material](https://material.angular.io/guide/theming)
