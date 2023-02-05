@@ -1,27 +1,68 @@
-# MeanUi
+# Angular UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
+## Setup
 
-## Development server
+### Angular UI
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+ng new mean-ui
+```
 
-## Code scaffolding
+To run `ng-server`, type:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+yarn workspace mean-ui start
+```
 
-## Build
+go to localhost:4200
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Angular Material
 
-## Running unit tests
+```bash
+ng add @angular/material
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Angular Material Theme
 
-## Running end-to-end tests
+- Theme is defined in `angular.json`
+ 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Development
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Angular
+
+```bash
+ng generate component components/post-create
+ng generate component components/post-list
+ng generate component components/header
+
+ng generate service services/post
+```
+
+To bind data, either:
+
+```html
+<textarea [value]="newPost" #postInput></textarea>
+<!-- onAddPost(postInput: HTMLTextAreaElement) -->
+<button> (click)="onAddPost(postInput)">Save Post</button>
+```
+
+or:
+
+```html
+<textarea [(ngModel)]="enteredPost"></textarea>
+<button (click)="onAddPost()">Save Post</button>
+```
+
+### Angular Material
+
+- See [Components](https://material.angular.io/components/categories)
+- See `app.modules.ts`, `post-create.component.html` and `post-create.component.scss` for example.
+
+### Angular Material Theme
+
+- Create `my-theme1.scss`
+- Check out [MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/) and [The color system](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
+- See [Styles and scripts configuration](https://angular.io/guide/workspace-config#styles-and-scripts-configuration) and [Theming Angular Material](https://material.angular.io/guide/theming)

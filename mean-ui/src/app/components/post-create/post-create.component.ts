@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
 
@@ -15,10 +16,15 @@ export class PostCreateComponent {
 
   constructor(private postService: PostService){}
 
-  onAddPost() {
-    const post: Post = {title: this.enteredTitle, content: this.enteredContent}
+  onAddPost(form: NgForm) {
+
+    if (form.invalid) return;
+
+    const post: Post = {
+      title: form.value.title,
+      content: form.value.content
+    };
     this.postService.raisePostCreatedEvent(post);
-    this.enteredTitle = '';
-    this.enteredContent = '';
+    form.reset();
   }
 }
