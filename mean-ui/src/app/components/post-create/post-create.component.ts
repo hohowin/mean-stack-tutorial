@@ -24,7 +24,7 @@ export class PostCreateComponent {
       title: form.value.title,
       content: form.value.content
     };
-    this.postService.raisePostCreatedEvent(post);
-    form.reset();
+    this.postService.addPost(post);
+    form.resetForm();
   }
 }

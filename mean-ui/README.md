@@ -8,13 +8,7 @@
 ng new mean-ui
 ```
 
-To run `ng-server`, type:
-
-```bash
-yarn workspace mean-ui start
-```
-
-go to localhost:4200
+Start server and go to http://localhost:4200
 
 ### Angular Material
 

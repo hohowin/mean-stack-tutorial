@@ -5,10 +5,10 @@ import { PostService } from './services/post.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [PostService]
+  providers: []
 })
 export class AppComponent {
   title = 'mean-ui';
 
-  constructor(private postService: PostService){}
+  constructor(){}
 }

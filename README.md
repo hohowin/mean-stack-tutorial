@@ -1,7 +1,7 @@
 # mean-stack-tutorial
 
-Youtube: [Angular - Node - MongoDB & Express (MEAN) Tutorial for Beginners - Getting Started](https://youtu.be/1tRLveSyNz8)
-Youtube: [Subjects in RxJS | Observables | Angular 12+](https://youtu.be/CKyMb3kXN_A)
+- Youtube: [Angular - Node - MongoDB & Express (MEAN) Tutorial for Beginners - Getting Started](https://youtu.be/1tRLveSyNz8)
+- Youtube: [Subjects in RxJS | Observables | Angular 12+](https://youtu.be/CKyMb3kXN_A)
 
 ## Setup Monorepo
 
@@ -19,4 +19,9 @@ Then, add in the root package.json:
 
 ## Angular UI
 
-See [mean-ui\'s README](mean-ui/README.md)
+- See [mean-ui\'s README](mean-ui/README.md)
+- In root folder, to run `ng-server`, type:
+
+```bash
+yarn workspace mean-ui start
+```

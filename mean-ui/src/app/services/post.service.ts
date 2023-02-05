@@ -7,11 +7,21 @@ import { Post } from '../models/post.model';
 })
 export class PostService {
 
-  postCreated = new Subject<Post>();
+  private posts: Post[] = [];
+  private postCreated = new Subject<Post[]>();
 
   constructor() { }
 
-  raisePostCreatedEvent(data: Post) {
-    this.postCreated.next(data);
+  getPosts() {
+    return [...this.posts];
+  }
+
+  getPostUpdateListener() {
+    return this.postCreated.asObservable();
+  }
+
+  addPost(post: Post) {
+    this.posts.push(post);
+    this.postCreated.next([...this.posts]);
   }
 }
