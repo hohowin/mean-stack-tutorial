@@ -25,3 +25,13 @@ Then, add in the root package.json:
 ```bash
 yarn workspace mean-ui start
 ```
+
+## Node Server
+
+- See [mean-server\'s README](mean-server/README.md)
+- In root folder, to run, type:
+
+```bash
+yarn workspace mean-server build
+yarn workspace mean-server start
+```
