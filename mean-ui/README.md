@@ -19,7 +19,47 @@ ng add @angular/material
 ### Angular Material Theme
 
 - Theme is defined in `angular.json`
- 
+
+### i18n
+
+Angular does build time localization
+
+- Youtube: [Introduction to Internationalization in Angular](https://youtu.be/KNTN-nsbV7M)
+- Docs: [Example Angular Internationalization application](https://angular.io/guide/i18n-example)
+- Docs: [Common Internationalization tasks](https://angular.io/guide/i18n-common-overview)
+
+First:
+
+```bash
+ng add @angular/localize
+```
+
+Then, modify `angular.json`:
+
+Under `projects` and your project, add:
+
+```json
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "zh-HK": "src/locale/messages.zh.xlf"
+        }
+      },
+```
+
+Under `architect > build > options`, add:
+
+```json
+            "localize": ["zh-HK"],
+```
+
+In the html, attach `i18n` attributes. Then, type:
+
+```bash
+ng extract-i18n --output-path src/locale
+```
+
+Finally, add `<target>` in the zh file
 
 ---
 

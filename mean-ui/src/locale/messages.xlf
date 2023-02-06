@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4070174889268643836" datatype="html">
+        <source>My Messages</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1606915016138499173" datatype="html">
+        <source>Please enter title!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-create/post-create.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2150005763156835525" datatype="html">
+        <source>Please enter content!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-create/post-create.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7261708822745730635" datatype="html">
+        <source>Save Post</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-create/post-create.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7585826646011739428" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-list/post-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-list/post-list.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6890840916396545653" datatype="html">
+        <source>No Posts</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/post-list/post-list.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
