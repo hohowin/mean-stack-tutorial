@@ -6,7 +6,8 @@
   "author": "Howin Ho <ho1ho@yahoo.com>",
   "license": "MIT",
   "private": true,
-  "workspaces":[
-    "mean-ui"
+  "workspaces": [
+    "mean-ui",
+    "mean-server"
   ]
 }
