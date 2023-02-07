@@ -45,6 +45,10 @@ yarn add express dotenv debug
 
 See `utils/config.ts` and `package.json`
 
+### debug
+
+See `index.ts` and `package.json`
+
 ---
 
 ## Run
