@@ -16,8 +16,11 @@ export class PostListComponent {
   private postsSub: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.posts = this.postService.getPosts();
-    this.postsSub = this.postService.getPostUpdateListener().subscribe(p => this.posts = p);
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe(
+        p => this.posts = p
+      );
   }
 
   ngOnDestroy(): void {

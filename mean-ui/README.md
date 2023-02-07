@@ -100,3 +100,22 @@ or:
 - Create `my-theme1.scss`
 - Check out [MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/) and [The color system](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
 - See [Styles and scripts configuration](https://angular.io/guide/workspace-config#styles-and-scripts-configuration) and [Theming Angular Material](https://material.angular.io/guide/theming)
+
+---
+
+## To Run Development Mode
+
+```bash
+yarn start
+```
+Then go to http://localhost:4200
+
+---
+
+## Note
+
+- Use the spread operator (return all elements of an array) to clone the array and
+
+```javascript
+[...this.posts]
+```
