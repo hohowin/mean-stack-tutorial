@@ -31,6 +31,13 @@ enable:
 "outDir": "./dist",
 ```
 
+### express
+
+```bash
+yarn add -D @types/express @types/dotenv
+yarn add express dotenv
+```
+
 ## Run
 
 ```bash
