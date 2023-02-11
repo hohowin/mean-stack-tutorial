@@ -1,20 +1,23 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import { Post } from './models/post.model';
+import cors from 'cors';
 
 export const app: Express = express();
 
-app.use((_: Request, res: Response, next: NextFunction) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Header',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods', 
-        'GET, POST, PUT, PATCH, DELETE, OPTIONS'
-    );
-    next();
-});
+// app.use((_: Request, res: Response, next: NextFunction) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader(
+//         'Access-Control-Allow-Header',
+//         'Origin, X-Requested-With, Content-Type, Accept'
+//     );
+//     res.setHeader(
+//         'Access-Control-Allow-Methods', 
+//         'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+//     );
+//     next();
+// });
+
+app.use(cors());
 
 app.use('/api/posts',(_req: Request, res: Response, _next: NextFunction) => {
     const posts: Post[] = [
