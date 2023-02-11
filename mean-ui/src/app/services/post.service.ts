@@ -26,7 +26,11 @@ export class PostService {
   }
 
   addPost(post: Post) {
-    this.posts.push(post);
-    this.postCreated.next([...this.posts]);
+    this.httpClient.post<{message: string}>('http://localhost:3333/api/posts', post)
+      .subscribe((res) => {
+          console.log(res.message);
+          this.posts.push(post);
+          this.postCreated.next([...this.posts]);
+      });
   }
 }
