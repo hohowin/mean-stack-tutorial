@@ -2,8 +2,19 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import { Post } from './models/post.model';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
+const PostModel = require('./schemas/post');
 
 export const app: Express = express();
+
+mongoose.connect("mongodb://peter:Parker@127.0.0.1:27017/mean-app?retryWrites=true")
+    .then(() => {
+        console.log('Connected to Mongo!');
+    })
+    .catch((err) => {
+        console.log('Failed to connect to Mongo!', err);
+    });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,8 +51,11 @@ app.get('/api/posts', (_req: Request, res: Response, _next: NextFunction) => {
 });
 
 app.post("/api/posts", (req: Request, res: Response, _next: NextFunction) => {
-    const post: Post = req.body;
-    console.log(post);
+    const post = new PostModel({
+        title: req.body.title,
+        content: req.body.content
+    });
+    post.save();
     res.status(201).json({
         message: 'Post added successfully'
     });

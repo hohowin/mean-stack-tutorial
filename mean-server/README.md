@@ -49,6 +49,51 @@ See `utils/config.ts` and `package.json`
 
 See `index.ts` and `package.json`
 
+### mongo
+
+- https://www.mongodb.com/docs/mongodb-shell/run-commands/
+- https://www.mongodb.com/developer/products/mongodb/cheat-sheet/
+
+To check mongodb
+
+```bash
+mongo --version
+mongod --version
+```
+
+To connect
+
+```bash
+docker exec -it mongodb bash
+
+# and then
+mongosh -u rootuser
+
+# show databases, users, roles
+show dbs
+show users
+show roles
+
+# create db
+use myNewDatabase
+db.myCollection.insertOne( { x: 1 } );
+
+# show collections
+show collections
+
+# create user (Optional)
+use admin
+db.createUser({ user: "mongoadmin" , pwd: "mongoadmin", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})
+
+# create user in new database
+use myNewDatabase
+db.createUser({ user: "peter" , pwd: "Parker", roles: ["dbOwner", "readWrite"]})
+```
+
+### mongoose
+
+https://mongoosejs.com/docs/index.html
+
 ---
 
 ## Run
