@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { Post } from './models/post.model';
 
-const PostModel = require('./schemas/post');
+const PostModel:  mongoose.Model<Post>  = require('./schemas/post');
 
 export const app: Express = express();
 
@@ -52,4 +52,14 @@ app.post("/api/posts", (req: Request, res: Response, _next: NextFunction) => {
     res.status(201).json({
         message: 'Post added successfully'
     });
+});
+
+app.delete("/api/posts/:id", (req: Request, res: Response, _next: NextFunction) => {
+    PostModel.deleteOne({_id: req.params.id})
+        .then( result => {
+            console.log(result);
+            res.status(200).json({
+                message: 'Post deleted successfully'
+            });
+        });
 });
