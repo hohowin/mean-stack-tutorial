@@ -101,6 +101,14 @@ or:
 - Check out [MATERIAL DESIGN PALETTE GENERATOR](http://mcg.mbitson.com/) and [The color system](https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors)
 - See [Styles and scripts configuration](https://angular.io/guide/workspace-config#styles-and-scripts-configuration) and [Theming Angular Material](https://material.angular.io/guide/theming)
 
+### Routes
+
+See `app-routing.module.ts`, `app-component.html`, and `header.component.html`.
+
+### Background Image
+
+See `assets/img` and `post-create.component.scss`
+
 ---
 
 ## To Run Development Mode
@@ -114,8 +122,10 @@ Then go to http://localhost:4200
 
 ## Note
 
-- Use the spread operator (return all elements of an array) to clone the array and
+1\. Use the spread operator (return all elements of an array) to clone the array and
 
 ```javascript
 [...this.posts]
 ```
+
+2\. In `post.service.ts`, saving state didn't quite work. So simply call getPosts() again. Maybe can fix it later.
