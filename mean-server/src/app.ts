@@ -1,8 +1,8 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
-import { Post } from './models/post.model';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import { Post } from './models/post.model';
 
 const PostModel = require('./schemas/post');
 
@@ -35,18 +35,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.get('/api/posts', (_req: Request, res: Response, _next: NextFunction) => {
-    const posts: Post[] = [
-        {id: '1', title: 'Server Side Post 1', content: 'This is coming from the server.'},
-        {id: '2', title: 'Server Side Post 2', content: 'This is coming from the server.'},
-        {id: '3', title: 'Server Side Post 3', content: 'This is coming from the server.'},
-        {id: '4', title: 'Server Side Post 4', content: 'This is coming from the server.'},
-        {id: '5', title: 'Server Side Post 5', content: 'This is coming from the server.'},
-        {id: '6', title: 'Server Side Post 6', content: 'This is coming from the server.'},
-    ];
-
-    res.status(200).json({
-        message: 'Post fetched successfully!',
-        posts: posts
+    PostModel.find().then((data: Post[]) => {
+        res.status(200).json({
+            message: 'Post fetched successfully!',
+            posts: data
+        });
     });
 });
 

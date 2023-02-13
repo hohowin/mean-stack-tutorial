@@ -88,6 +88,9 @@ db.createUser({ user: "mongoadmin" , pwd: "mongoadmin", roles: ["userAdminAnyDat
 # create user in new database
 use myNewDatabase
 db.createUser({ user: "peter" , pwd: "Parker", roles: ["dbOwner", "readWrite"]})
+
+# Show objects
+db.posts.find()
 ```
 
 ### mongoose
