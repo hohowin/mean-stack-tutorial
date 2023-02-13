@@ -36,9 +36,10 @@ export class PostService {
   }
 
   addPost(post: Post) {
-    this.httpClient.post<{message: string}>('http://localhost:3333/api/posts', post)
-      .subscribe((res) => {
+    this.httpClient.post<{message: string, postId: string}>('http://localhost:3333/api/posts', post)
+      .subscribe(res => {
           console.log(res.message);
+          // post.id = res.postId;
           // this.posts.push(post);
           // this.postCreated.next([...this.posts]);
           this.getPosts();
