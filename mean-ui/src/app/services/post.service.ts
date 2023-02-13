@@ -40,19 +40,19 @@ export class PostService {
     this.httpClient.post<{message: string}>('http://localhost:3333/api/posts', post)
       .subscribe((res) => {
           console.log(res.message);
-          this.posts.push(post);
-          this.postCreated.next([...this.posts]);
+          // this.posts.push(post);
+          // this.postCreated.next([...this.posts]);
+          this.getPosts();
       });
   }
 
   deletePost(postId: string) {
     this.httpClient.delete(`http://localhost:3333/api/posts/${postId}`)
       .subscribe(() => {
-        const updatedPosts = this.posts.filter(p => {
+        this.posts = this.posts.filter(p => {
           console.log(`pid = ${p.id}, postId = ${postId}`);
           p.id !== postId;
         });
-        this.posts = updatedPosts;
         this.postCreated.next([...this.posts]);
       });
   }

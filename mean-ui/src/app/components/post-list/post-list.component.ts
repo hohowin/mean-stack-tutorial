@@ -24,6 +24,7 @@ export class PostListComponent {
   }
 
   onDelete(postId: string) {
+    console.log(`Post ID = ${postId}`);
     this.postService.deletePost(postId);
   }
 
