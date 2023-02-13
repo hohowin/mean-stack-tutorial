@@ -8,7 +8,7 @@ import { Post } from '../models/post.model';
 })
 export class PostService {
 
-  private posts: Post[] = [];
+//  private posts: Post[] = [];
   private postCreated = new Subject<Post[]>();
 
   constructor(private httpClient: HttpClient) { }
@@ -27,8 +27,7 @@ export class PostService {
       }))
       .subscribe((transformed: Post[]) => {
         console.log(transformed);
-        this.posts = transformed;
-        this.postCreated.next([...this.posts]);
+        this.postCreated.next(transformed);
       });
   }
 
@@ -48,12 +47,13 @@ export class PostService {
 
   deletePost(postId: string) {
     this.httpClient.delete(`http://localhost:3333/api/posts/${postId}`)
-      .subscribe(() => {
-        this.posts = this.posts.filter(p => {
-          console.log(`pid = ${p.id}, postId = ${postId}`);
-          p.id !== postId;
-        });
-        this.postCreated.next([...this.posts]);
+      .subscribe((res) => {
+        // this.posts = this.posts.filter(p => {
+        //   console.log(`pid = ${p.id}, postId = ${postId}`);
+        //   p.id !== postId;
+        // });
+        // this.postCreated.next([...this.posts]);
+        this.getPosts();
       });
   }
 }

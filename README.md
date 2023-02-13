@@ -55,15 +55,16 @@ docker-compose up -d
 3\. Start Mean Server
 
 ```bash
-# Start in different terminals
-yarn watch
-yarn dev
+# Start in different terminals. Note: Build will copy the .env file to the dist directory
+yarn workspace mean-server build
+yarn workspace mean-server watch
+yarn workspace mean-server dev
 ```
 4\. Start Mean UI
 
 ```bash
 # Start in different terminal
-yarn start
+yarn workspace mean-ui start
 ```
 
 5\. Go to:
