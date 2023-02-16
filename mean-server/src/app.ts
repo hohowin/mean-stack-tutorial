@@ -56,6 +56,21 @@ app.post("/api/posts", (req: Request, res: Response, _next: NextFunction) => {
     });
 });
 
+app.put("/api/posts/:id", (req: Request, res: Response, _next: NextFunction) => {
+    const post = {
+//        _id: req.body.id,
+        title: req.body.title,
+        content: req.body.content
+    };
+    PostModel.updateOne({_id: req.params.id}, post)
+    .then( result => {
+        console.log(result);
+        res.status(200).json({
+            message: 'Post updated successfully'
+        });
+    });
+});
+
 app.delete("/api/posts/:id", (req: Request, res: Response, _next: NextFunction) => {
     PostModel.deleteOne({_id: req.params.id})
         .then( result => {

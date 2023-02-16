@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Subject } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { Post } from '../models/post.model';
 
 @Injectable({
@@ -8,12 +8,12 @@ import { Post } from '../models/post.model';
 })
 export class PostService {
 
-//  private posts: Post[] = [];
+  private posts: Post[] = [];
   private postCreated = new Subject<Post[]>();
 
   constructor(private httpClient: HttpClient) { }
 
-  getPosts() {
+  getPosts(): void {
     this.httpClient
       .get<{message: string, posts: any}>('http://localhost:3333/api/posts')
       .pipe(map((data) => {
@@ -27,15 +27,25 @@ export class PostService {
       }))
       .subscribe((transformed: Post[]) => {
         console.log(transformed);
+        this.posts = transformed;
         this.postCreated.next(transformed);
       });
   }
 
-  getPostUpdateListener() {
+  getPost(id: string): Post {
+    const found = this.posts.find(p => p.id === id);
+    if (found) {
+      return {...found};
+    } else {
+      return {id: '', title: '', content: ''};
+    }
+  }
+
+  getPostUpdateListener(): Observable<Post[]> {
     return this.postCreated.asObservable();
   }
 
-  addPost(post: Post) {
+  addPost(post: Post): void {
     this.httpClient.post<{message: string, postId: string}>('http://localhost:3333/api/posts', post)
       .subscribe(res => {
           console.log(res.message);
@@ -46,7 +56,15 @@ export class PostService {
       });
   }
 
-  deletePost(postId: string) {
+  updatePost(post: Post) {
+    this.httpClient.put<{message: string}>(`http://localhost:3333/api/posts/${post.id}`, post)
+      .subscribe(res => {
+        console.log(res.message);
+        this.getPosts();
+      });
+  }
+
+  deletePost(postId: string): void {
     this.httpClient.delete(`http://localhost:3333/api/posts/${postId}`)
       .subscribe((res) => {
         // this.posts = this.posts.filter(p => {

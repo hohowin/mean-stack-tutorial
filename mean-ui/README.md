@@ -103,7 +103,7 @@ or:
 
 ### Routes
 
-See `app-routing.module.ts`, `app-component.html`, and `header.component.html`.
+See `app-routing.module.ts`, `app-component.html`, `header.component.html`, and `post-create.component.ts`
 
 ### Background Image
 
@@ -129,3 +129,20 @@ Then go to http://localhost:4200
 ```
 
 2\. In `post.service.ts`, saving state didn't quite work. So simply call getPosts() again. Maybe can fix it later.
+
+3\. Convert `string | null` to `string`
+
+```javascript
+mystring ?? ""
+```
+
+4\. Handle array.find
+
+```javascript
+const found = this.posts.find(p => p.id === id);
+if (found) {
+  return {...found};
+} else {
+  return {id: '', title: '', content: ''};
+}
+```
