@@ -106,3 +106,27 @@ yarn build
 # or yarn debug for debug
 yarn start
 ```
+
+---
+
+## Tips
+
+1/. Change:
+```javascript
+const express = require("express");
+const router = express.Router();
+module.exports = router;
+`` 
+to:
+import { Router } from 'express';
+const router = Router();
+export default router;
+```
+
+2/. Change:
+```javascript
+const postRoutes = require("src/routes/posts");
+`` 
+to:
+import postRoutes from './routes/posts';
+```
