@@ -146,3 +146,13 @@ if (found) {
   return {id: '', title: '', content: ''};
 }
 ```
+
+5\. Require vs Import: 
+- https://www.educba.com/require-vs-import/
+- https://www.educba.com/require-vs-import/
+
+6\. Import Export:
+- https://www.typescriptlang.org/docs/handbook/modules.html
+- https://stackoverflow.com/questions/12696236/module-exports-in-typescript
+- https://www.educative.io/answers/how-to-import-and-export-a-module-in-typescript
+- https://www.sitepoint.com/understanding-module-exports-exports-node-js/
