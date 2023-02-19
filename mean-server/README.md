@@ -8,7 +8,7 @@
 
 ```bash
 yarn init -y
-yarn add -D @types/node typescript nodemon
+yarn add -D @types/node typescript nodemon eslint
 tsc --init
 ```
 
@@ -32,6 +32,12 @@ enable:
 
 ```json
 "outDir": "./dist",
+```
+
+### eslint
+
+```bash
+npx eslint --init
 ```
 
 ### express
