@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, Observable, Subject } from 'rxjs';
 import { Post } from '../models/post.model';
 
@@ -11,7 +12,7 @@ export class PostService {
   private posts: Post[] = [];
   private postCreated = new Subject<Post[]>();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   getPosts(): void {
     this.httpClient
@@ -53,6 +54,7 @@ export class PostService {
           // this.posts.push(post);
           // this.postCreated.next([...this.posts]);
           this.getPosts();
+          this.router.navigate(['/']);
       });
   }
 
@@ -61,6 +63,7 @@ export class PostService {
       .subscribe(res => {
         console.log(res.message);
         this.getPosts();
+        this.router.navigate(['/']);
       });
   }
 
