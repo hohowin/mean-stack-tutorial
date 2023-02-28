@@ -1,18 +1,25 @@
 <mat-card>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+    <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
         <mat-form-field>
-            <input matInput i18n placeholder="Post Title" type="text" name="title" [ngModel]="post?.title" required minlength="3" #title="ngModel" />
-            <mat-error i18n *ngIf="title.invalid">Please enter title!</mat-error>
+            <input matInput i18n placeholder="Post Title" type="text" name="title" formControlName="title" class="form-control" />
+
+            <div *ngIf="f['title'].errors && f['title'].touched">
+                <mat-error *ngIf="f['title'].errors['required']">Title is required</mat-error>
+                <mat-error *ngIf="f['title'].errors['minlength']">Title must be at least 3 characters long</mat-error>
+            </div>
         </mat-form-field>
         <div>
             <button mat-stroked-button type="button" color="primary" (click)="filePicker.click()">Pick Image</button>
             <input type="file" #filePicker/>
         </div>
         <mat-form-field>
-            <textarea i18n matInput placeholder="Post Content" rows="4" name="content" [ngModel]="post?.content" required #content="ngModel"></textarea>
-            <mat-error i18n *ngIf="content.invalid">Please enter content!</mat-error>
+            <textarea i18n matInput placeholder="Post Content" rows="4" name="content" formControlName="content" ></textarea>
+
+            <div *ngIf="f['content'].errors && f['content'].touched">
+                <mat-error *ngIf="f['content'].errors['required']">Content is required</mat-error>
+            </div>
         </mat-form-field>
-        <button mat-raised-button i18n color="accent" type="submit">Save Post</button>
+        <button mat-raised-button i18n color="accent" type="submit" [disabled]="form.invalid">Save Post</button>
     </form>
 </mat-card>

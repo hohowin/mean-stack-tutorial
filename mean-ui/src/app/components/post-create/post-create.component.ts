@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
@@ -17,10 +17,17 @@ export class PostCreateComponent implements OnInit {
   private postId: string = '';
   post: Post|null = null;
   isLoading = false;
+  form: FormGroup;
 
-  constructor(private postService: PostService, public route: ActivatedRoute){}
+  constructor(private postService: PostService, public route: ActivatedRoute, private formBuilder: FormBuilder){}
   
   ngOnInit() {
+
+    this.form = this.formBuilder.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      content: ['', [Validators.required]],
+    });
+
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
@@ -28,6 +35,12 @@ export class PostCreateComponent implements OnInit {
         this.isLoading = true;
         this.post = this.postService.getPost(this.postId);
         this.isLoading = false;
+
+        this.form.setValue({
+          'title': this.post.title,
+          'content': this.post.content,
+        });
+
       } else {
         this.mode = 'create';
         this.postId = '';
@@ -35,14 +48,14 @@ export class PostCreateComponent implements OnInit {
     });
   }
 
-  onSavePost(form: NgForm) {
+  onSavePost() {
 
-    if (form.invalid) return;
+    if (this.form.invalid) return;
 
     const post: Post = {
       id: this.postId,
-      title: form.value.title,
-      content: form.value.content
+      title: this.form.value.title,
+      content: this.form.value.content
     };
 
     this.isLoading = true;
@@ -54,6 +67,10 @@ export class PostCreateComponent implements OnInit {
       this.postService.updatePost(post);
     }
     
-    form.resetForm();
+    this.form.reset();
+  }
+
+  get f() {
+    return this.form.controls;
   }
 }

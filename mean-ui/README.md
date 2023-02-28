@@ -156,3 +156,11 @@ if (found) {
 - https://stackoverflow.com/questions/12696236/module-exports-in-typescript
 - https://www.educative.io/answers/how-to-import-and-export-a-module-in-typescript
 - https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+
+7\. To remove `strict property initialization`, in `tsconfig.json`,
+
+```json
+"compilerOptions": {
+    "strictPropertyInitialization": false,
+}
+```
