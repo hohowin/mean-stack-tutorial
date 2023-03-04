@@ -164,3 +164,14 @@ if (found) {
     "strictPropertyInitialization": false,
 }
 ```
+
+8\. Following function indicates that:
+- function name is mimeType
+- input parameter is of type `AbstractControl`
+- return type of Promise or Observable;
+- which includes a type that has a property that the key can be interpreted as a string, with a dynamic name `[]`;
+- and the value is `any`
+
+```javascript
+const mimeType = (control: AbstractControl): Promise<{[key: string]: any}> | Observable<{[key: string]: any}> => {}
+```

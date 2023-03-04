@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/app/models/post.model';
 import { PostService } from 'src/app/services/post.service';
+import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-post-create',
@@ -20,14 +21,14 @@ export class PostCreateComponent implements OnInit {
   form: FormGroup;
   imagePreview: string;
 
-  constructor(private postService: PostService, public route: ActivatedRoute, private formBuilder: FormBuilder){}
+  constructor(private postService: PostService, public route: ActivatedRoute, private fb: FormBuilder){}
   
   ngOnInit() {
 
-    this.form = this.formBuilder.group({
+    this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required]],
-      image: ['', [Validators.required]]
+      image: ['', [Validators.required], [mimeType]]
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
