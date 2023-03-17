@@ -14,9 +14,10 @@ export class PostService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getPosts(): void {
+  getPosts(postsPerPage: number, currentPage: number): void {
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.httpClient
-      .get<{message: string, posts: any}>('http://localhost:3333/api/posts')
+      .get<{message: string, posts: any}>('http://localhost:3333/api/posts' + queryParams)
       .pipe(map((data) => {
         return data.posts.map((p: any) => {
           return {
@@ -53,7 +54,7 @@ export class PostService {
           // post.id = res.postId;
           // this.posts.push(post);
           // this.postCreated.next([...this.posts]);
-          this.getPosts();
+          this.getPosts(2, 1);
           this.router.navigate(['/']);
       });
   }
@@ -62,7 +63,7 @@ export class PostService {
     this.httpClient.put<{message: string}>(`http://localhost:3333/api/posts/${post.id}`, post)
       .subscribe(res => {
         console.log(res.message);
-        this.getPosts();
+        this.getPosts(2, 1);
         this.router.navigate(['/']);
       });
   }
@@ -75,7 +76,7 @@ export class PostService {
         //   p.id !== postId;
         // });
         // this.postCreated.next([...this.posts]);
-        this.getPosts();
+        this.getPosts(2, 1);
       });
   }
 }

@@ -4,8 +4,17 @@ import PostModel from '../schemas/post';
 
 const router = Router();
 
-router.get('', (_req: Request, res: Response, _next: NextFunction): void => {
-    PostModel.find().then((data: Post[]) => {
+router.get('', (req: Request, res: Response, _next: NextFunction): void => {
+    const pageSize = req.query.pagesize ? +req.query.pagesize : null;
+    const currentPage = req.query.page ? +req.query.page : null;
+    const postQuery = PostModel.find();
+    if (pageSize && currentPage) {
+        postQuery
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize);
+    }
+
+    postQuery.then((data: Post[]) => {
         res.status(200).json({
             message: 'Post fetched successfully!',
             posts: data
