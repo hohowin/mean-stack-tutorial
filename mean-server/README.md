@@ -60,17 +60,14 @@ See `index.ts` and `package.json`
 - https://www.mongodb.com/docs/mongodb-shell/run-commands/
 - https://www.mongodb.com/developer/products/mongodb/cheat-sheet/
 
-To check mongodb
-
-```bash
-mongo --version
-mongod --version
-```
-
 To connect
 
 ```bash
 docker exec -it mongodb bash
+
+# To check mongodb
+mongo --version
+mongod --version
 
 # and then
 mongosh -u rootuser
@@ -81,7 +78,7 @@ show users
 show roles
 
 # create db
-use myNewDatabase
+use mean-app
 db.myCollection.insertOne( { x: 1 } );
 
 # show collections
@@ -92,7 +89,7 @@ use admin
 db.createUser({ user: "mongoadmin" , pwd: "mongoadmin", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})
 
 # create user in new database
-use myNewDatabase
+use mean-app
 db.createUser({ user: "peter" , pwd: "Parker", roles: ["dbOwner", "readWrite"]})
 
 # Show objects
@@ -102,6 +99,7 @@ db.posts.find()
 ### mongoose
 
 https://mongoosejs.com/docs/index.html
+http://localhost:8081
 
 ---
 

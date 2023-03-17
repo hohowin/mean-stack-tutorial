@@ -56,6 +56,7 @@ docker-compose up -d
 
 ```bash
 # Start in different terminals. Note: Build will copy the .env file to the dist directory
+yarn
 yarn workspace mean-server build
 yarn workspace mean-server watch
 yarn workspace mean-server dev
