@@ -19,7 +19,6 @@ export class PostCreateComponent implements OnInit {
   post: Post|null = null;
   isLoading = false;
   form: FormGroup;
-  imagePreview: string;
 
   constructor(private postService: PostService, public route: ActivatedRoute, private fb: FormBuilder){}
   
@@ -28,7 +27,6 @@ export class PostCreateComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       content: ['', [Validators.required]],
-      image: ['', [Validators.required], [mimeType]]
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -71,17 +69,6 @@ export class PostCreateComponent implements OnInit {
     }
     
     this.form.reset();
-  }
-
-  onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files![0];
-    this.form.patchValue({image: file});
-    this.f['image'].updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    }
-    reader.readAsDataURL(file);
   }
 
   get f() {
