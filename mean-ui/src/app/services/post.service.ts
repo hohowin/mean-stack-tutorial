@@ -10,27 +10,34 @@ import { Post } from '../models/post.model';
 export class PostService {
 
   private posts: Post[] = [];
-  private postCreated = new Subject<Post[]>();
+  private postCreated = new Subject<{posts: Post[], postCount: number}>();
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   getPosts(postsPerPage: number, currentPage: number): void {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.httpClient
-      .get<{message: string, posts: any}>('http://localhost:3333/api/posts' + queryParams)
-      .pipe(map((data) => {
-        return data.posts.map((p: any) => {
+      .get<{message: string, posts: any; maxPosts: number}>('http://localhost:3333/api/posts' + queryParams)
+      .pipe(
+        map((postData) => {
+        return {
+          posts: postData.posts.map((p: any) => {
           return {
             title: p.title,
             content: p.content,
             id: p._id
           };
-        });
+        }), 
+        maxPosts: postData.maxPosts
+      };
       }))
-      .subscribe((transformed: Post[]) => {
-        console.log(transformed);
-        this.posts = transformed;
-        this.postCreated.next(transformed);
+      .subscribe((transformed) => {
+        console.log(transformed.posts);
+        this.posts = transformed.posts;
+        this.postCreated.next({
+          posts: [...this.posts],
+          postCount: transformed.maxPosts
+        });
       });
   }
 
@@ -43,7 +50,7 @@ export class PostService {
     }
   }
 
-  getPostUpdateListener(): Observable<Post[]> {
+  getPostUpdateListener(): Observable<{posts: Post[], postCount: number}> {
     return this.postCreated.asObservable();
   }
 

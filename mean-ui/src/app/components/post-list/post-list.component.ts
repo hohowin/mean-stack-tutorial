@@ -15,7 +15,7 @@ export class PostListComponent {
 
   posts: Post[] = [];
   private postsSub: Subscription = new Subscription();
-  totalPosts: number = 10;
+  totalPosts: number = 0;
   postsPerPage: number = 2;
   pageSizeOptions: number[] = [1,2,5,10];
   currentPage: number = 1;
@@ -23,9 +23,10 @@ export class PostListComponent {
   ngOnInit(): void {
     this.postService.getPosts(this.postsPerPage, 1);
     this.postsSub = this.postService.getPostUpdateListener()
-      .subscribe(
-        p => this.posts = p
-      );
+      .subscribe((data: {posts: Post[], postCount: number}) => {
+        this.totalPosts = data.postCount;
+        this.posts = data.posts;
+      });
   }
 
   onDelete(postId: string) {

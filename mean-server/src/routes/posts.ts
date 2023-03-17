@@ -8,16 +8,23 @@ router.get('', (req: Request, res: Response, _next: NextFunction): void => {
     const pageSize = req.query.pagesize ? +req.query.pagesize : null;
     const currentPage = req.query.page ? +req.query.page : null;
     const postQuery = PostModel.find();
+    let fetchedPosts: Post[];
     if (pageSize && currentPage) {
         postQuery
         .skip(pageSize * (currentPage - 1))
         .limit(pageSize);
     }
 
-    postQuery.then((data: Post[]) => {
+    postQuery
+    .then(documents => {
+        fetchedPosts = documents;
+        return PostModel.count();
+    })
+    .then(count => {
         res.status(200).json({
             message: 'Post fetched successfully!',
-            posts: data
+            posts: fetchedPosts,
+            maxPosts: count
         });
     });
 });
