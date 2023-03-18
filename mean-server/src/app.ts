@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import postRoutes from './routes/posts';
+import userRoutes from './routes/user';
 
 //const postRoutes = require("src/routes/posts");
 
@@ -36,3 +37,4 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use("/api/posts", postRoutes);
+app.use("/api/users", userRoutes);

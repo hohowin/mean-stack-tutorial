@@ -98,8 +98,8 @@ db.posts.find()
 
 ### mongoose
 
-https://mongoosejs.com/docs/index.html
-http://localhost:8081
+- https://mongoosejs.com/docs/index.html
+- http://localhost:8081
 
 ---
 
