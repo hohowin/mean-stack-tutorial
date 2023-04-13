@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import checkAuth from '../middlewares/check-auth';
 import { Post } from 'src/models/post.model';
 import PostModel from '../schemas/post';
 
@@ -29,7 +30,9 @@ router.get('', (req: Request, res: Response, _next: NextFunction): void => {
     });
 });
 
-router.post("", (req: Request, res: Response, _next: NextFunction): void => {
+router.post("", 
+    checkAuth,
+    (req: Request, res: Response, _next: NextFunction): void => {
     const post = new PostModel({
         title: req.body.title,
         content: req.body.content
@@ -42,7 +45,9 @@ router.post("", (req: Request, res: Response, _next: NextFunction): void => {
     });
 });
 
-router.put("/:id", (req: Request, res: Response, _next: NextFunction): void => {
+router.put("/:id", 
+    checkAuth,
+    (req: Request, res: Response, _next: NextFunction): void => {
     const post = {
 //        _id: req.body.id,
         title: req.body.title,
@@ -57,7 +62,9 @@ router.put("/:id", (req: Request, res: Response, _next: NextFunction): void => {
     });
 });
 
-router.delete("/:id", (req: Request, res: Response, _next: NextFunction): void => {
+router.delete("/:id", 
+    checkAuth,
+    (req: Request, res: Response, _next: NextFunction): void => {
     PostModel.deleteOne({_id: req.params.id})
         .then( result => {
             console.log(result);
