@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { AuthData } from '../models/auth.model';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { AuthData } from '../models/auth.model';
 export class AuthService {
 
   private token: string = "";
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {}
 

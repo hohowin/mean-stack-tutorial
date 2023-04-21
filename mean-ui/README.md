@@ -111,6 +111,10 @@ See `assets/img` and `post-create.component.scss`
 
 ---
 
+### BehaviorSubject
+
+see `auth.service.ts`, `post-list.component.ts`, and `post-list.component.html`
+
 ## To Run Development Mode
 
 ```bash
