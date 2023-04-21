@@ -9,7 +9,7 @@ import { AuthData } from '../models/auth.model';
 })
 export class AuthService {
 
-  private token: string = "";
+  private token: string | null = null;
   private authStatusListener = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -38,7 +38,15 @@ export class AuthService {
           const token = response.token;
           this.token = token;
           this.authStatusListener.next(true);
+          this.router.navigate(['/']);
         }
       );
+  }
+
+  logout() {
+    this.token = null;
+    this.authStatusListener.next(false);
+    this.router.navigate
+    this.router.navigate(['/']);
   }
 }

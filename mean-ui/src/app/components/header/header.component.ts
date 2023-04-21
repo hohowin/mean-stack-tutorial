@@ -20,6 +20,10 @@ export class HeaderComponent {
     });
   }
 
+  onLogout() {
+    this.auth.logout();
+  }
+
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }

@@ -15,6 +15,6 @@
                 <mat-error *ngIf="passwordInput.invalid">Password too short</mat-error>
             </div>
         </mat-form-field>
-        <button mat-raised-button i18n color="accent" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button *ngIf="!isLoading" mat-raised-button i18n color="accent" type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 </mat-card>
