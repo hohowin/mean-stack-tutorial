@@ -109,11 +109,11 @@ See `app-routing.module.ts`, `app-component.html`, `header.component.html`, and 
 
 See `assets/img` and `post-create.component.scss`
 
----
-
 ### BehaviorSubject
 
 see `auth.service.ts`, `post-list.component.ts`, and `post-list.component.html`
+
+---
 
 ## To Run Development Mode
 
