@@ -113,6 +113,15 @@ See `assets/img` and `post-create.component.scss`
 
 see `auth.service.ts`, `post-list.component.ts`, and `post-list.component.html`
 
+### Auth Inteceptor
+
+see `app.ts`, `app.module.ts`, `auth-inteceptor.ts`, and `auth.service.ts`
+
+### Authentication
+
+server side, see: user.ts, check-auth.ts, post.ts
+client side, see: auth.service.ts
+
 ---
 
 ## To Run Development Mode
